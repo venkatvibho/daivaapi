@@ -1,0 +1,37 @@
+from enum import unique
+from django.contrib import admin
+import nested_admin
+from daiva.models import *
+from django import forms
+
+admin.site.register(Events)
+admin.site.register(Anouncements)
+admin.site.register(Cities)
+admin.site.register(Countries)
+admin.site.register(EventFaqs)
+admin.site.register(EventSevas)
+admin.site.register(EventUpdates)
+admin.site.register(Faqs)
+admin.site.register(Images)
+admin.site.register(Migrations)
+admin.site.register(OrderSevas)
+admin.site.register(Orders)
+admin.site.register(Rasi)
+admin.site.register(Relations)
+admin.site.register(Settings)
+admin.site.register(SevaCoupons)
+admin.site.register(SevaFaqs)
+admin.site.register(SevaPrices)
+admin.site.register(SevaTypes)
+admin.site.register(SevaUpdates)
+admin.site.register(Sevas)
+admin.site.register(States)
+admin.site.register(Temples)
+admin.site.register(Testimonials)
+admin.site.register(UserAddresses)
+admin.site.register(UserCart)
+admin.site.register(UserFamilyDetails)
+admin.site.register(UserRewards)
+admin.site.register(Users)
+admin.site.register(SevaCouponSevas)
+admin.site.register(SevaCouponUsers)
