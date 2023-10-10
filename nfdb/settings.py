@@ -107,10 +107,10 @@ WSGI_APPLICATION = 'nfdb.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'pooja',
-    'USER': 'root',
-    'PASSWORD': '',
-    'HOST': 'localhost',
+    'NAME': os.environ.get('DATABASE_NAME'),
+    'USER': os.environ.get('DATABASE_USER'),
+    'PASSWORD': os.environ.get('DATABASE_PASS'),
+    'HOST': os.environ.get('DATABASE_HOST'),
     'PORT': '3306',
     'OPTIONS': {
 		'sql_mode': 'traditional',
