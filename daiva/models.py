@@ -17,6 +17,9 @@ class Anouncements(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.title
+    
     class Meta:
         managed = False
         db_table = 'anouncements'
@@ -32,6 +35,9 @@ class Cities(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+    
     class Meta:
         managed = False
         db_table = 'cities'
@@ -45,6 +51,9 @@ class Countries(models.Model):
     created_at = models.DateTimeField(blank=True, null=True)
     updated_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+    
     class Meta:
         managed = False
         db_table = 'countries'
@@ -60,6 +69,9 @@ class EventFaqs(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.title
+    
     class Meta:
         managed = False
         db_table = 'event_faqs'
@@ -74,6 +86,9 @@ class EventSevas(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.seva
+    
     class Meta:
         managed = False
         db_table = 'event_sevas'
@@ -89,6 +104,9 @@ class EventUpdates(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.title
+    
     class Meta:
         managed = False
         db_table = 'event_updates'
@@ -115,6 +133,9 @@ class Events(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.title
+    
     class Meta:
         managed = False
         db_table = 'events'
@@ -129,6 +150,9 @@ class Faqs(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.title
+    
     class Meta:
         managed = False
         db_table = 'faqs'
@@ -144,6 +168,9 @@ class Images(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+    
     class Meta:
         managed = False
         db_table = 'images'
@@ -153,6 +180,9 @@ class Migrations(models.Model):
     migration = models.CharField(max_length=255)
     batch = models.IntegerField()
 
+    def __str__(self):
+        return self.migration
+    
     class Meta:
         managed = False
         db_table = 'migrations'
@@ -171,6 +201,9 @@ class OrderSevas(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return str(self.order)
+    
     class Meta:
         managed = False
         db_table = 'order_sevas'
@@ -200,6 +233,9 @@ class Orders(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.user
+    
     class Meta:
         managed = False
         db_table = 'orders'
@@ -213,6 +249,9 @@ class Rasi(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+    
     class Meta:
         managed = False
         db_table = 'rasi'
@@ -226,6 +265,9 @@ class Relations(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.title
+    
     class Meta:
         managed = False
         db_table = 'relations'
@@ -241,6 +283,9 @@ class Settings(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.address
+    
     class Meta:
         managed = False
         db_table = 'settings'
@@ -255,6 +300,9 @@ class SevaCouponSevas(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.seva
+    
     class Meta:
         managed = False
         db_table = 'seva_coupon_sevas'
@@ -269,6 +317,9 @@ class SevaCouponUsers(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.seva_coupon
+    
     class Meta:
         managed = False
         db_table = 'seva_coupon_users'
@@ -291,6 +342,9 @@ class SevaCoupons(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.title
+    
     class Meta:
         managed = False
         db_table = 'seva_coupons'
@@ -306,6 +360,9 @@ class SevaFaqs(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.title
+    
     class Meta:
         managed = False
         db_table = 'seva_faqs'
@@ -325,6 +382,9 @@ class SevaPrices(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.title
+    
     class Meta:
         managed = False
         db_table = 'seva_prices'
@@ -339,6 +399,9 @@ class SevaTypes(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+    
     class Meta:
         managed = False
         db_table = 'seva_types'
@@ -354,6 +417,9 @@ class SevaUpdates(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.title
+    
     class Meta:
         managed = False
         db_table = 'seva_updates'
@@ -384,6 +450,9 @@ class Sevas(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.title
+    
     class Meta:
         managed = False
         db_table = 'sevas'
@@ -399,6 +468,9 @@ class States(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+    
     class Meta:
         managed = False
         db_table = 'states'
@@ -423,6 +495,9 @@ class Temples(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+    
     class Meta:
         managed = False
         db_table = 'temples'
@@ -439,6 +514,9 @@ class Testimonials(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+    
     class Meta:
         managed = False
         db_table = 'testimonials'
@@ -464,6 +542,9 @@ class UserAddresses(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.address_name
+    
     class Meta:
         managed = False
         db_table = 'user_addresses'
@@ -485,6 +566,9 @@ class UserCart(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.user
+    
     class Meta:
         managed = False
         db_table = 'user_cart'
@@ -506,6 +590,9 @@ class UserFamilyDetails(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.family_type
+    
     class Meta:
         managed = False
         db_table = 'user_family_details'
@@ -523,6 +610,9 @@ class UserRewards(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return self.user
+    
     class Meta:
         managed = False
         db_table = 'user_rewards'
@@ -546,6 +636,9 @@ class Users(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
+    def __str__(self):
+        return str(self.mobile_number)
+    
     class Meta:
         managed = False
         db_table = 'users'
