@@ -87,7 +87,7 @@ class EventSevas(models.Model):
     deleted_at = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return self.seva
+        return str(self.seva)
     
     class Meta:
         managed = False
