@@ -42,6 +42,22 @@ class Cities(models.Model):
         managed = False
         db_table = 'cities'
 
+class Banners(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    title  = models.CharField(max_length=255)
+    image = models.ForeignKey('Images', models.DO_NOTHING,related_name="image_idImages_Banners")
+    description = models.TextField()
+    is_active = models.IntegerField()
+    created_at = models.DateTimeField(blank=True, null=True)
+    updated_at = models.DateTimeField(blank=True, null=True)
+    deleted_at = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return self.title 
+    
+    class Meta:
+        managed = False
+        db_table = 'banners'
 
 class Countries(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -192,10 +208,12 @@ class OrderSevas(models.Model):
     id = models.BigAutoField(primary_key=True)
     order = models.ForeignKey('Orders', models.DO_NOTHING)
     seva_price = models.ForeignKey('SevaPrices', models.DO_NOTHING)
+    user_family_detail = models.ForeignKey('UserAddresses', models.DO_NOTHING,related_name="user_family_detail_idAddress")
     qty = models.IntegerField()
     base_price = models.FloatField()
     selling_price = models.FloatField()
     seva_price_information = models.TextField(blank=True, null=True)
+    user_family_details = models.TextField(blank=True, null=True)
     is_prasadam_available = models.IntegerField()
     created_at = models.DateTimeField(blank=True, null=True)
     updated_at = models.DateTimeField(blank=True, null=True)
