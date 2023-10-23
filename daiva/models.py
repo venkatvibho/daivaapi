@@ -413,7 +413,7 @@ class SevaPrices(models.Model):
 
 class SevaPriceFamilyDetail(models.Model):
     id = models.BigAutoField(primary_key=True)
-    seva_price = models.ForeignKey('seva_prices', models.DO_NOTHING,related_name="SavePriceData")
+    seva_price = models.ForeignKey(SevaPrices, models.DO_NOTHING,related_name="SavePriceData")
     family_type = models.CharField(
         max_length=25,
         choices= [
