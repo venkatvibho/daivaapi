@@ -422,14 +422,14 @@ class SevaPriceFamilyDetail(models.Model):
                     ("kartha_ancestors", "kartha_ancestors"),
                     ("", "MyFamily")
                 ],
-        default="",
+        blank=True,null=True
     )
     created_at = models.DateTimeField(blank=True, null=True)
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return self.title
+        return str(self.family_type)
     
     class Meta:
         managed = False
