@@ -212,12 +212,12 @@ class OrderSevas(models.Model):
     id = models.BigAutoField(primary_key=True)
     order = models.ForeignKey('Orders', models.DO_NOTHING)
     seva_price = models.ForeignKey('SevaPrices', models.DO_NOTHING)
-    user_family_detail = models.ForeignKey('UserAddresses', models.DO_NOTHING,related_name="user_family_detail_idAddress")
+    # user_family_detail = models.ForeignKey('UserAddresses', models.DO_NOTHING,related_name="user_family_detail_idAddress")
     qty = models.IntegerField()
     base_price = models.FloatField()
     selling_price = models.FloatField()
     seva_price_information = models.TextField(blank=True, null=True)
-    user_family_details = models.TextField(blank=True, null=True)
+    # user_family_details = models.TextField(blank=True, null=True)
     is_prasadam_available = models.IntegerField()
     created_at = models.DateTimeField(blank=True, null=True)
     updated_at = models.DateTimeField(blank=True, null=True)
@@ -411,6 +411,29 @@ class SevaPrices(models.Model):
         managed = False
         db_table = 'seva_prices'
 
+class SevaPriceFamilyDetail(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    seva_price = models.ForeignKey('seva_prices', models.DO_NOTHING,related_name="SavePriceData")
+    family_type = models.CharField(
+        max_length=25,
+        choices= [
+                    ("kartha", "kartha"),
+                    ("ancestors", "ancestors"),
+                    ("kartha_ancestors", "kartha_ancestors"),
+                    ("", "MyFamily")
+                ],
+        default="",
+    )
+    created_at = models.DateTimeField(blank=True, null=True)
+    updated_at = models.DateTimeField(blank=True, null=True)
+    deleted_at = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        managed = False
+        db_table = 'seva_price_family_details'
 
 class SevaTypes(models.Model):
     id = models.BigAutoField(primary_key=True)
