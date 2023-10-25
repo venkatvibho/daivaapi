@@ -288,7 +288,7 @@ class Relations(models.Model):
     deleted_at = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return self.title
+        return self.name
     
     class Meta:
         managed = False
