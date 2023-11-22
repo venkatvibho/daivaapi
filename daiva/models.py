@@ -6,12 +6,35 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from django.utils import timezone
+from django.contrib.auth.models import User
+import string 
+from django.utils.text import slugify 
+import random 
 
+def random_string_generator(size = 10, chars = string.ascii_lowercase + string.digits): 
+    return ''.join(random.choice(chars) for _ in range(size)) 
+  
+def unique_slug_generator(instance, new_slug = None): 
+    if new_slug is not None: 
+        slug = new_slug 
+    else: 
+        slug = slugify(instance.title) 
+    Klass = instance.__class__ 
+    qs_exists = Klass.objects.filter(slug = slug).exists() 
+      
+    if qs_exists: 
+        new_slug = "{slug}-{randstr}".format( 
+            slug = slug, randstr = random_string_generator(size = 4)) 
+              
+        return unique_slug_generator(instance, new_slug = new_slug) 
+    return slug 
 
 class Anouncements(models.Model):
     id = models.BigAutoField(primary_key=True)
     seva = models.ForeignKey('Sevas', models.DO_NOTHING)
     title = models.TextField()
+    
     is_active = models.IntegerField()
     ordering_number = models.BigIntegerField(default=0)
     created_at = models.DateTimeField(blank=True, null=True)
@@ -133,6 +156,7 @@ class EventUpdates(models.Model):
 class Events(models.Model):
     id = models.BigAutoField(primary_key=True)
     title = models.TextField()
+    slug = models.TextField(null=True,blank=True)
     sku_code = models.CharField(max_length=255)
     event = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
@@ -155,10 +179,16 @@ class Events(models.Model):
 
     def __str__(self):
         return self.title
-    
+        
     class Meta:
         managed = False
         db_table = 'events'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = unique_slug_generator(self) 
+            super(Events, self).save(*args, **kwargs)
+
 
 
 class Faqs(models.Model):
@@ -474,6 +504,7 @@ class SevaUpdates(models.Model):
 class Sevas(models.Model):
     id = models.BigAutoField(primary_key=True)
     title = models.TextField()
+    slug = models.TextField(null=True,blank=True)
     sku_code = models.CharField(max_length=255)
     event = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
@@ -500,11 +531,15 @@ class Sevas(models.Model):
 
     def __str__(self):
         return self.title
-    
+            
     class Meta:
         managed = False
         db_table = 'sevas'
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = unique_slug_generator(self) 
+            super(Sevas, self).save(*args, **kwargs)
 
 class States(models.Model):
     id = models.BigAutoField(primary_key=True)
