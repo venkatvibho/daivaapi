@@ -184,13 +184,6 @@ class Events(models.Model):
         managed = False
         db_table = 'events'
 
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = unique_slug_generator(self) 
-            super(Events, self).save(*args, **kwargs)
-
-
-
 class Faqs(models.Model):
     id = models.BigAutoField(primary_key=True)
     title = models.TextField()
@@ -535,11 +528,6 @@ class Sevas(models.Model):
     class Meta:
         managed = False
         db_table = 'sevas'
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = unique_slug_generator(self) 
-            super(Sevas, self).save(*args, **kwargs)
 
 class States(models.Model):
     id = models.BigAutoField(primary_key=True)
